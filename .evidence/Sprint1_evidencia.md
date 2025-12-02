@@ -46,7 +46,7 @@ Responsable(s): Serrano Max
 
 EVIDENCIA: test_main.log
 
-'''bash
+```bash
 ==================================================== test session starts =====================================================
 platform linux -- Python 3.12.3, pytest-9.0.1, pluggy-1.6.0
 rootdir: /mnt/c/Users/Max--/Documents/projects/repos/Proyecto_3_Runner_Factory__orquestando_GitHubhosted_y_selfhosted_de_forma
@@ -56,4 +56,4 @@ collected 4 items
 tests/test_main.py ....                                                                                                [100%]
 
 ===================================================== 4 passed in 4.96s ======================================================
-'''
+```
