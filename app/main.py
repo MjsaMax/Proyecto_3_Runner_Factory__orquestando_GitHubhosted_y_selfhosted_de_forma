@@ -29,4 +29,4 @@ def read_doc(doc_id:str):
     for doc in fake_docs_db:
         if doc["id"] == doc_id:
             return doc
-        raise HTTPException(status_code = 404, detail="Document not found")
+    raise HTTPException(status_code = 404, detail="Document not found")
