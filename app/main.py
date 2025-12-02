@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List
 
 app = FastAPI(title="Docs Registry API", docs_url="/swagger")
 
