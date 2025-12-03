@@ -9,7 +9,7 @@ on:
 
 jobs:
   lint_and_test:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, local-docker]
 
     steps:
       - name: Checkout code
