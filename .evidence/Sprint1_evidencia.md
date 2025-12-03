@@ -1,4 +1,6 @@
 
+Evidencia del Sprint 1: https://1drv.ms/f/c/fdb226ef3c2e079a/IgC5dM3Il_PJQIdvL1Os1OYPAewzYsQ0gu6cKer4Xm440QI?e=kPgmcA
+
 Historia 1: Configuración Inicial del Repositorio y Entorno
 
 ID: #1 ID_PULL_REQUEST: #6
@@ -23,6 +25,39 @@ EVIDENCIA: [COMMIT](https://github.com/MjsaMax/Proyecto_3_Runner_Factory__orques
 
 Responsable(s): Serrano Max
 
+Historia 2: Implementar "Docs Registry API"
+
+ID: #2 ID_PULL_REQUEST: #2
+
+Descripción:
+
+Implementar el microservicio backend básico utilizando el framework FastAPI  con los endpoints requeridos para listar y consultar documentos simulados.
+
+Tareas:
+
+Crear archivo app/main.py.
+Configurar FastAPI moviendo la documentación automática (Swagger) a /swagger para liberar la ruta /docs.
+Implementar endpoint GET /health (status check).
+Implementar endpoint GET /docs (debe devolver una lista ficticia de documentos con ID, nombre y tipo).
+Implementar endpoint GET /docs/{id} (debe devolver detalles de un documento específico o 404 si no existe).
+
+Criterios de Aceptación:
+
+    La API corre localmente con uvicorn app.main:app --reload.
+    Los 3 endpoints (/health, /docs, /docs/{id}) devuelven JSON válido
+
+EVIDENCIA: execution_log.txt
+
+```bash
+INFO:     Will watch for changes in these directories: ['/home/walter/DesarrolloSoftware/PC5/Proyecto_3_Runner_Factory__orquestando_GitHubhosted_y_selfhosted_de_forma']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [11573] using StatReload
+INFO:     Started server process [11575]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+```
+
+Responsable: Walter Poma Navarro
 
 Historia 3: Pruebas Unitarias (Unit Tests)
 
@@ -57,6 +92,7 @@ tests/test_main.py ....                                                         
 
 ===================================================== 4 passed in 4.96s ======================================================
 ```
+
 Historia 4: Pipeline de CI: ci_hosted.yml
 
 ID: #4 

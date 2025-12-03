@@ -1,0 +1,12 @@
+INFO:     Will watch for changes in these directories: ['/home/walter/DesarrolloSoftware/PC5/Proyecto_3_Runner_Factory__orquestando_GitHubhosted_y_selfhosted_de_forma']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [11573] using StatReload
+INFO:     Started server process [11575]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:56848 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56856 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+
+# Prueba de endpoint/docs
+walter@Galium-PC:~/DesarrolloSoftware/PC5/Proyecto_3_Runner_Factory__orquestando_GitHubhosted_y_selfhosted_de_forma$ curl -s http://127.0.0.1:8000/docs
+[{"id":"1","name":"Protocolo de Seguridad Runner","type":"pdf"},{"id":"2","name":"Arquitectura Hibrida","type":"docx"}]
