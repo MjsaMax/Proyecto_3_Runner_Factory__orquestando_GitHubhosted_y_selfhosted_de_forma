@@ -55,6 +55,7 @@ INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 ```
 
+Responsable: Walter Poma Navarro
 
 Historia 3: Pruebas Unitarias (Unit Tests)
 
