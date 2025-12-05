@@ -1,0 +1,29 @@
+name: Build Local (Self-Hosted)
+
+on:
+    push:
+        branches:
+            - main
+            - 'feature/*'     
+            - '**'
+    pull_request:
+        branches: ["main"]
+    workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Docker Image
+    runs-on: [self-hosted, local-docker]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: |
+          echo "Iniciando construcción de imagen en runner local..."
+          docker build -t docs-registry-api:local .
+          echo "Imagen construida exitosamente."
+
+      - name: Verificar imagen creada
+        run: docker images | grep docs-registry-api
