@@ -1,7 +1,7 @@
 
-Evidencia del Sprint 1: VIDEO
+Evidencia del Sprint 2: VIDEO
 
-Historia 1: Configuración del Self-Hosted Runner
+## Historia 1: Configuración del Self-Hosted Runner
 
 ID: #16 ID_PULL_REQUEST: #20
 
@@ -31,7 +31,7 @@ Current runner version: '2.329.0'
 
 Responsable(s): Serrano Max
 
-Historia 2: Documentación de Riesgos y Mitigaciones
+## Historia 2: Documentación de Riesgos y Mitigaciones
 
 ID: #19 ID_PULL_REQUEST: #21
 
@@ -55,3 +55,60 @@ EVIDENCIA:	[commit 2cf7af9ad8f1a5e66cb7f8622a7e028105bf6c0b](https://github.com/
 
 
 Responsable(s): Serrano Max
+
+## Historia 3: Orquestación de CI en Runner Local
+
+**ID:** #17
+**ID_PULL_REQUEST:** #24
+
+Descripción:
+Crear y configurar el flujo de trabajo (Workflow) de GitHub Actions para automatizar la construcción de la imagen Docker utilizando la infraestructura local (Self-Hosted Runner) previamente configurada. El objetivo es validar la arquitectura híbrida permitiendo que el código se compile en la máquina del equipo en lugar de la nube.
+
+Tareas:
+* Crear el archivo .github/workflows/build_local.yml.
+* Configurar los triggers para detectar cambios en todas las ramas.
+* Definir el job para ejecutarse específicamente en runners con las etiquetas self-hosted y local-docker.
+* Integrar los pasos de checkout y docker build en el pipeline.
+
+Criterios de Aceptación:
+* El workflow se dispara automáticamente al hacer un git push.
+* El estado del Workflow en la pestaña "Actions" finaliza en Success (Verde).
+* Se verifica que la imagen Docker fue creada en la máquina host.
+
+EVIDENCIA: Captura del Workflow exitoso en GitHub Actions.
+![green_workflow](imagenes/green_workflow.png)
+Responsable(s): Poma Walter
+
+---
+
+## Historia 2: Dockerización de API  y Corrección de Build
+
+**ID:** #24 
+**ID_PULL_REQUEST:** #24
+
+Descripción:
+Solucionar el error crítico de construcción ("failed to read dockerfile") implementando un Dockerfile .
+
+Tareas:
+* Crear el archivo Dockerfile en la raíz del proyecto.
+* Seleccionar una imagen base ligera (python:3.10-slim).
+* Configurar la instalación de dependencias desde requirements.txt.
+
+
+Criterios de Aceptación:
+* El paso "Build Docker Image" en GitHub Actions no arroja el error "no such file or directory".
+* El contenedor se construye exponiendo el puerto 8000 correctamente.
+* El log muestra la instalación exitosa de librerías (FastAPI, Uvicorn).
+
+EVIDENCIA: Log de ejecución exitosa del paso "Build Docker Image"
+
+```bash
+# Log extract from GitHub Actions Runner
+Step 1/6 : FROM python:3.10-slim
+ ---> ...
+Step 4/6 : RUN pip install --no-cache-dir -r requirements.txt
+ ---> Running in ...
+Successfully installed fastapi-0.100.0 uvicorn-0.23.0 ...
+Step 6/6 : CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+ ---> Running in ...
+Successfully built docs-registry-api:local
