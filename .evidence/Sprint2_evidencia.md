@@ -1,5 +1,5 @@
 
-Evidencia del Sprint 2: VIDEO
+Evidencia del Sprint 2: https://1drv.ms/f/c/fdb226ef3c2e079a/IgDEEeuIV_wpRqjahXv3j7hHAW9fVQRgpbRoINibczd-0o4
 
 ## Historia 1: Configuración del Self-Hosted Runner
 
@@ -112,3 +112,40 @@ Successfully installed fastapi-0.100.0 uvicorn-0.23.0 ...
 Step 6/6 : CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
  ---> Running in ...
 Successfully built docs-registry-api:local
+```
+---
+
+
+## Historia 4: Integración de Seguridad y SBOM
+
+**ID:** #18
+
+Descripción:
+Extender el pipeline local para incluir escaneo de vulnerabilidades y generación de la lista de materiales de software (SBOM), guardando los resultados como evidencia en la carpeta local .evidence/.
+
+Tareas:
+* Editar el archivo build_local.yml.
+* Añadir paso para escaneo de vulnerabilidades con Trivy (apuntando a la imagen construida).
+* Añadir paso para generación de SBOM con Syft.
+* Configurar ambos pasos para redirigir la salida (output) a archivos dentro de la carpeta .evidence/.
+
+Criterios de Aceptación:
+* El pipeline no falla (o falla controladamente con exit-code 0 según configuración).
+* La carpeta .evidence/ en el runner local contiene los reportes generados tras la ejecución.
+
+EVIDENCIA: Log de ejecución local de Trivy y generación de reportes JSON.
+
+```bash
+# Ejecución local de Trivy (Pre-validación)
+2025-12-05T00:44:15Z    INFO    Detected OS     family="debian" version="13.1"
+2025-12-05T00:44:15Z    INFO    [debian] Detecting vulnerabilities...   os_version="13" pkg_num=87
+2025-12-05T00:44:15Z    INFO    Number of language-specific files       num=1
+2025-12-05T00:44:15Z    INFO    [python-pkg] Detecting vulnerabilities...
+
+# Verificación de archivos generados
+$ ls -lh .evidence/
+total 64K
+-rw-r--r-- 1 aaron aaron  45K Dec  4 19:44 sbom.json
+-rw-r--r-- 1 aaron aaron  15K Dec  4 19:44 trivy-report.json
+```
+Responsable(s): Davila Aaron
