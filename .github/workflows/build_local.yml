@@ -1,23 +1,26 @@
 name: Build Local (Self-Hosted)
 
 on:
-    push:
-        branches:
-            - main
-            - 'feature/*'     
-            - '**'
-    pull_request:
-        branches: ["main"]
-    workflow_dispatch:
+  push:
+    branches:
+      - main
+      - 'feature/*'     
+      - '**'
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
 
 jobs:
-  build:
-    name: Build Docker Image
+  build_and_scan:
+    name: Build, Scan & SBOM
     runs-on: [self-hosted, local-docker]
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Preparar directorio de evidencias
+        run: mkdir -p .evidence
 
       - name: Build Docker Image
         run: |
@@ -27,3 +30,26 @@ jobs:
 
       - name: Verificar imagen creada
         run: docker images | grep docs-registry-api
+
+      - name: Run Trivy Vulnerability Scanner
+        uses: aquasecurity/trivy-action@0.24.0
+        with:
+          image-ref: 'docs-registry-api:local'
+          format: 'json'
+          output: '.evidence/trivy-report.json'
+          
+          exit-code: '0'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+
+      - name: Generate SBOM with Syft
+        uses: anchore/sbom-action@v0
+        with:
+          image: 'docs-registry-api:local'
+          format: 'json'
+          output-file: '.evidence/sbom.json'
+
+      - name: Listar evidencias generadas
+        run: |
+          echo "Contenido de .evidence/:"
+          ls -l .evidence/
