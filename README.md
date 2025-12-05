@@ -6,7 +6,7 @@ Este proyecto implementa una arquitectura de CI/CD híbrida para el servicio "Do
 
 * **Sprint 1 (API + CI Hosted):**  https://1drv.ms/f/c/fdb226ef3c2e079a/IgC5dM3Il_PJQIdvL1Os1OYPAewzYsQ0gu6cKer4Xm440QI?e=kPgmcA
 
-* **Sprint 2 (Agregar):**
+* **Sprint 2 (Self-hosted runner + build/scan):** https://1drv.ms/f/c/fdb226ef3c2e079a/IgDEEeuIV_wpRqjahXv3j7hHAW9fVQRgpbRoINibczd-0o4
 
 * **Sprint 3 (Agregar):**
 
