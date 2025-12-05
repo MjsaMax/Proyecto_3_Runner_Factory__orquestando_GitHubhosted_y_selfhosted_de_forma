@@ -31,7 +31,7 @@ Current runner version: '2.329.0'
 
 Responsable(s): Serrano Max
 
-Historia 1: Configuración del Self-Hosted Runner
+Historia 2: Documentación de Riesgos y Mitigaciones
 
 ID: #19 ID_PULL_REQUEST: #21
 
