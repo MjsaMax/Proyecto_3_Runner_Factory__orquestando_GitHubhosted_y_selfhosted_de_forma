@@ -25,3 +25,26 @@ Criterios de Aceptación:
 EVIDENCIA: Ubicados en .evidence/cleanup_log.txt , ‎.evidence/deploy_log.txt , .evidence/execution_log_deploy.txt , .evidence/smoke_test.txt
 
 Responsable(s): Serrano Max
+
+Historia 2: Desarrollo del Script de Limpieza y Mantenimiento de Recursos
+
+**ID:** #39
+
+Descripción:
+Para garantizar la estabilidad del servidor y evitar conflictos entre ejecuciones consecutivas (o saturación de disco), se implementó un script dedicado (bash) que gestiona la limpieza profunda de recursos utilizados por el runner self-hosted al finalizar el despliegue.
+
+Tareas:
+* Crear el script scripts/cleanup_runner.sh para la eliminación de contenedores y volúmenes huérfanos asociados al despliegue.
+* Incluir comandos de mantenimiento para limpiar imágenes temporales o "dangling images" 
+* Implementar manejo de errores (flags condicionales) para asegurar que el script no falle el pipeline si no encuentra recursos para borrar.
+* Integrar la ejecución del script dentro del workflow deploy_local.yml utilizando la condicional if: always() para garantizar la limpieza incluso si el despliegue falla.
+
+Criterios de Aceptación:
+* El script libera espacio en disco eliminando artefactos no utilizados tras la ejecución.
+* El script puede ejecutarse múltiples veces sin generar errores críticos (idempotencia).
+* El entorno de Docker queda en un estado "limpio" listo para el siguiente job.
+* Documentarlo en .evidence/.
+
+**EVIDENCIA:** Ubicados en .evidence/cleanup_runner_log.txt (Log de ejecución y espacio liberado), scripts/cleanup_runner.sh (Código fuente) y la integración en .github/workflows/deploy_local.yml.
+
+**Responsable(s):** Poma Walter
