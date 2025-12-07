@@ -1,0 +1,27 @@
+name: Deploy Local Self-Hosted
+
+on:
+  push:
+    branches: [ "main" , "feature/pipeline-de-despliegue-local" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  deploy-and-test:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: |
+          docker compose up -d --build 2>&1
+          sleep 5
+
+      - run: |
+          HTTP_STATUS=$(curl -o /dev/null -s -w "%{http_code}\n" http://localhost:8000/health)
+          echo "Status: $HTTP_STATUS" # tee -a .evidence/smoke_test.txt
+          if [ "$HTTP_STATUS" != "200" ]; then exit 1; fi
+
+      - if: always()
+        run: |
+          chmod +x ./cleanup_runner.sh
+          ./cleanup_runner.sh
