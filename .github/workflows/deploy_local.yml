@@ -25,3 +25,9 @@ jobs:
         run: |
           chmod +x ./cleanup_runner.sh
           ./cleanup_runner.sh
+      
+      - name: Limpieza del runner (Cleanup)
+        if: always()
+        run:  |
+          chmod +x scripts/cleanup_runner.sh
+          ./scripts/cleanup_runner.sh

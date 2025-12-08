@@ -1,0 +1,17 @@
+[INFO] Iniciando limpieza de recursos del runner...
+ -> Bajando servicios definidos en docker-compose...
+ Container fastapi-runner-app  Stopping
+ Container fastapi-runner-app  Stopped
+ Container fastapi-runner-app  Removing
+ Container fastapi-runner-app  Removed
+ Network proyecto_3_runner_factory__orquestando_githubhosted_y_selfhosted_de_forma_default  Removing
+ Network proyecto_3_runner_factory__orquestando_githubhosted_y_selfhosted_de_forma_default  Removed
+ -> Eliminando contenedores detenidos.-..
+Total reclaimed space: 0B
+ -> Eliminando imágenes huérfanas (dangling)
+Deleted Images:
+deleted: sha256:63fc25318b15e6531f061da29549176bab28e7e68f8d322509793c4528140cd4
+
+Total reclaimed space: 0B
+ -> Eliminando redes no utilizadas...
+[SUCCESS] El entorno Docker está limpio y listo para el siguiente job.
