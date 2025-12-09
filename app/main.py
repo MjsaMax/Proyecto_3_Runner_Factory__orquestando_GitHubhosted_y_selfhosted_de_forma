@@ -18,7 +18,7 @@ fake_docs_db = [
 
 @app.get("/health")
 def read_health():
-    return {"status": "ok", "project": "Runner Factory"}
+    return {"DEMO SPRIN # ACTIVADO": "ok", "project": "Runner Factory"}
 
 @app.get("/docs", response_model=List[Document])
 def list_docs():
