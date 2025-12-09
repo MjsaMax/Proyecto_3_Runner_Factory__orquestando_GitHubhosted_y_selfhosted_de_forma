@@ -21,11 +21,7 @@ jobs:
           echo "Status: $HTTP_STATUS" # tee -a .evidence/smoke_test.txt
           if [ "$HTTP_STATUS" != "200" ]; then exit 1; fi
 
-      - if: always()
-        run: |
-          chmod +x ./cleanup_runner.sh
-          ./cleanup_runner.sh
-      
+
       - name: Limpieza del runner (Cleanup)
         if: always()
         run:  |
