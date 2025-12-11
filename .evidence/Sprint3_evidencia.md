@@ -48,3 +48,27 @@ Criterios de Aceptación:
 **EVIDENCIA:** Ubicados en .evidence/cleanup_runner_log.txt (Log de ejecución y espacio liberado), scripts/cleanup_runner.sh (Código fuente) y la integración en .github/workflows/deploy_local.yml.
 
 **Responsable(s):** Poma Walter
+
+---
+
+## Historia 3: Documentación de Protocolos de Seguridad del Runner
+
+**ID:** #40
+
+Descripción:
+Documentar los protocolos de seguridad para la administración del Self-Hosted Runner. Este documento guía el mantenimiento de la integridad del servidor y mitiga riesgos de persistencia o fuga de información, complementando las medidas técnicas implementadas en el pipeline.
+
+Tareas:
+* Crear el documento `docs/RUNNER_SECURITY.md` con checklist de verificación.
+* Documentar la política de Logs: Persistencia, ubicación y rotación.
+* Documentar la estrategia de Aislamiento: Ejecución rootless y limpieza de contenedores.
+* Documentar el procedimiento de Reset: Pasos para desvincular y limpiar el runner en caso de compromiso.
+
+Criterios de Aceptación:
+* El documento `RUNNER_SECURITY.md` existe en el repositorio en la carpeta `docs/`.
+* El checklist cubre explícitamente logs, aislamiento y procedimientos de reset.
+* La documentación es clara y ejecutable.
+
+**EVIDENCIA:** [Documento de Seguridad (RUNNER_SECURITY.md)](../docs/RUNNER_SECURITY.md)
+
+**Responsable(s):** Davila Aaron

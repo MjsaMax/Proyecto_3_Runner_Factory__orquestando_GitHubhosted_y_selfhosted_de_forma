@@ -8,9 +8,9 @@ Este proyecto implementa una arquitectura de CI/CD híbrida para el servicio "Do
 
 * **Sprint 2 (Self-hosted runner + build/scan):** https://1drv.ms/f/c/fdb226ef3c2e079a/IgDEEeuIV_wpRqjahXv3j7hHAW9fVQRgpbRoINibczd-0o4
 
-* **Sprint 3 (Agregar):**
+* **Sprint 3 (Deploy local + runner casi efímero):** https://1drv.ms/v/c/fdb226ef3c2e079a/IQDShn6g6VIGTaQw8EGktyizAaHObCfNalN7z9zh3aS1PTc?e=WZDm0j
 
-* **Sprint 4 (Agregar):**
+* **Sprint 4 (Video Final):** https://1drv.ms/f/c/fdb226ef3c2e079a/IgBcsmAcMlB0R524WAANn5QnAXGML_l-6WhV_9Q1HwL_Cno?e=USrW4r
 
 
 ## Documentación de Riesgos y Mitigaciones en self-hosted runners
